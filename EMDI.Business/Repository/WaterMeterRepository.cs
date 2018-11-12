@@ -1,4 +1,5 @@
-﻿using EMDI.Models;
+﻿using EMDI.Business.Repository;
+using EMDI.Models;
 using EMDI.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -7,59 +8,80 @@ using System.Threading.Tasks;
 
 namespace EMDI.Repository
 {
-    public class WaterMeterRepository : IWaterMeterRepository
+    public class WaterMeterRepository : RepositoryBase<WaterMeter>, IWaterMeterRepository
     {
+        /// <summary>
+        /// Database Context
+        /// </summary>
         private readonly EDMIDBContext _context;
 
-        public WaterMeterRepository(EDMIDBContext context)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="repositoryContext"></param>
+        public WaterMeterRepository(EDMIDBContext context) : base(context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Get all Items
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<WaterMeter>> GetWaterMeterAsync()
         {
-            return await _context.WaterMeter.ToListAsync();
+            return await GetAllAsync();
         }
 
+        /// <summary>
+        /// Get Item by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<WaterMeter> GetWaterMeterAsync(int id)
         {
-            return await _context.WaterMeter.FindAsync(id);
+            return await FindAsync(id);
         }
 
+        /// <summary>
+        /// Add new Item
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task<int> AddWaterMeterAsync(WaterMeter item)
         {
             int rowsAffected = 0;
 
-            _context.WaterMeter.Add(item);
-            rowsAffected = await _context.SaveChangesAsync();
+            rowsAffected = await AddAsync(item);
 
             return rowsAffected;
         }
 
+        /// <summary>
+        /// Update item
+        /// </summary>
+        /// <param name="dbItem"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task<int> UpdateWaterMeterAsync(WaterMeter dbItem, WaterMeter item)
         {
             int rowsAffected = 0;
 
-            // detach
-            _context.Entry(dbItem).State = EntityState.Detached;
-
-            // set Modified flag in your entry
-            _context.Entry(item).State = EntityState.Modified;
-
-            rowsAffected = await _context.SaveChangesAsync();
+            rowsAffected = await UpdateAsync(dbItem, item);
 
             return rowsAffected;
         }
 
+        /// <summary>
+        /// Delete Item
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<int> DeleteWaterMeterAsync(int id)
         {
             int rowsAffected = 0;
 
-            var item = await _context.WaterMeter.FindAsync(id);
-
-            _context.WaterMeter.Remove(item);
-
-            rowsAffected = await _context.SaveChangesAsync();
+            rowsAffected = await DeleteAsync(id);
 
             return rowsAffected;
         }

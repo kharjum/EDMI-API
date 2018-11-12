@@ -8,11 +8,14 @@ namespace EMDI.Repository.Interfaces
 {
     public interface IRepositoryBase<T>
     {
-        Task<IEnumerable<T>> FindAllAsync();
-        Task<IEnumerable<T>> FindByConditionAync(Expression<Func<T, bool>> expression);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        Task SaveAsync();
+        Task<List<T>> GetAllAsync();
+
+        Task<T> FindAsync(int id);
+
+        Task<int> AddAsync(T item);
+
+        Task<int> UpdateAsync(T dbItem, T item);
+
+        Task<int> DeleteAsync(int id);
     }
 }

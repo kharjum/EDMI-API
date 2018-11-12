@@ -19,34 +19,53 @@ namespace EMDI.Business.Repository
             this.RepositoryContext = repositoryContext;
         }
 
-        public async Task<IEnumerable<T>> FindAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
             return await this.RepositoryContext.Set<T>().ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> FindByConditionAync(Expression<Func<T, bool>> expression)
+        public async Task<T> FindAsync(int id)
         {
-            return await this.RepositoryContext.Set<T>().Where(expression).ToListAsync();
+            return await this.RepositoryContext.Set<T>().FindAsync(id);
         }
 
-        public void Create(T entity)
+        public async Task<int> AddAsync(T item)
         {
-            this.RepositoryContext.Set<T>().Add(entity);
+            int rowsAffected = 0;
+
+            this.RepositoryContext.Set<T>().Add(item);
+
+            rowsAffected = await this.RepositoryContext.SaveChangesAsync();
+
+            return rowsAffected;
         }
 
-        public void Update(T entity)
+        public async Task<int> UpdateAsync(T dbItem, T item)
         {
-            this.RepositoryContext.Set<T>().Update(entity);
+            int rowsAffected = 0;
+
+            // detach
+            this.RepositoryContext.Entry<T>(dbItem).State = EntityState.Detached;
+
+            // set Modified flag in your entry
+            this.RepositoryContext.Entry<T>(item).State = EntityState.Modified;
+
+            rowsAffected = await this.RepositoryContext.SaveChangesAsync();
+
+            return rowsAffected;
         }
 
-        public void Delete(T entity)
+        public async Task<int> DeleteAsync(int id)
         {
-            this.RepositoryContext.Set<T>().Remove(entity);
-        }
+            int rowsAffected = 0;
 
-        public async Task SaveAsync()
-        {
-            await this.RepositoryContext.SaveChangesAsync();
+            T item = await this.RepositoryContext.Set<T>().FindAsync(id);
+
+            this.RepositoryContext.Set<T>().Remove(item);
+
+            rowsAffected = await this.RepositoryContext.SaveChangesAsync();
+
+            return rowsAffected;
         }
     }
 }

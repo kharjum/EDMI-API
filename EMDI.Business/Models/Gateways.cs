@@ -5,7 +5,7 @@ namespace EMDI.Models
 {
     public partial class Gateways: BasicDevice
     {
-        public int? Ip { get; set; }
+        public string Ip { get; set; }
 
         public int? Port { get; set; }
     }

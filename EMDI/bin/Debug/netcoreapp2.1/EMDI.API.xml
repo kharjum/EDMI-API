@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EMDI.API</name>
+    </assembly>
+    <members>
+        <member name="T:EMDI.Controllers.ElectricMetersController">
+            <summary>
+            WaterMeter Controller API
+            </summary>
+        </member>
+        <member name="F:EMDI.Controllers.ElectricMetersController._repository">
+            <summary>
+            WaterMeter Repository
+            </summary>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.#ctor(EMDI.Repository.Interfaces.IElectricMeterRepository)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository">WaterMeter Repository</param>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.Get">
+            <summary>
+            Get a list of WaterMeter avaible
+            </summary>
+            <returns>list of WaterMeter avaible</returns>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.Get(System.Int32)">
+            <summary>
+            Get a specific WaterMeter
+            </summary>
+            <param name="id"></param>
+            <returns>A WaterMeter</returns>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.Post(EMDI.Models.ElectricMeter)">
+            <summary>
+            Add a new WaterMeter
+            </summary>
+            <param name="item">New WaterMeter</param>
+            <returns>Gatway added</returns>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.Put(EMDI.Models.ElectricMeter,System.Int32)">
+            <summary>
+            Update a WaterMeter
+            </summary>
+            <param name="item">WaterMeter to update</param>
+            <param name="id">WaterMeter id</param>
+            <returns>WaterMeter updated</returns>
+        </member>
+        <member name="M:EMDI.Controllers.ElectricMetersController.Delete(System.Int32)">
+            <summary>
+            Delete a WaterMeter
+            </summary>
+            <param name="id">WaterMeter id</param>
+            <returns>Ok</returns>
+        </member>
+        <member name="T:EMDI.Controllers.GatewaysController">
+            <summary>
+            Gateway Controller API
+            </summary>
+        </member>
+        <member name="F:EMDI.Controllers.GatewaysController._repository">
+            <summary>
+            Gateway Repository
+            </summary>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.#ctor(EMDI.Repository.Interfaces.IGatewaysRepository)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository">Gateway Repository</param>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.Get">
+            <summary>
+            Get a list of Gateway avaible
+            </summary>
+            <remarks>This API will get all values.</remarks>
+            <returns>list of Gateway avaible</returns>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.Get(System.Int32)">
+            <summary>
+            Get a specific gateway
+            </summary>
+            <remarks>This API will get a specific value.</remarks>
+            <param name="id"></param>
+            <returns>A gateway</returns>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.Post(EMDI.Models.Gateways)">
+            <summary>
+            Add a new gateway
+            </summary>
+            <remarks>This API will add a new value.</remarks>
+            <param name="item">New Gateway</param>
+            <returns>Gatway added</returns>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.Put(EMDI.Models.Gateways,System.Int32)">
+            <summary>
+            Update a Gateway
+            </summary>
+            <remarks>This API will update a value.</remarks>
+            <param name="item">Gateway to update</param>
+            <param name="id">Gateway id</param>
+            <returns>Gateway updated</returns>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.Delete(System.Int32)">
+            <summary>
+            Delete a gateway
+            </summary>
+            <param name="id">Gateway id</param>
+            <returns>Ok</returns>
+        </member>
+        <member name="T:EMDI.Controllers.WaterMetersController">
+            <summary>
+            WaterMeter Controller API
+            </summary>
+        </member>
+        <member name="F:EMDI.Controllers.WaterMetersController._repository">
+            <summary>
+            WaterMeter Repository
+            </summary>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.#ctor(EMDI.Repository.Interfaces.IWaterMeterRepository)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="repository">WaterMeter Repository</param>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.Get">
+            <summary>
+            Get a list of WaterMeter avaible
+            </summary>
+            <remarks>This API will get all values.</remarks>
+            <returns>list of WaterMeter avaible</returns>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.Get(System.Int32)">
+            <summary>
+            Get a specific WaterMeter
+            </summary>
+            <remarks>This API will get a specific values.</remarks>
+            <param name="id"></param>
+            <returns>A WaterMeter</returns>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.Post(EMDI.Models.WaterMeter)">
+            <summary>
+            Add a new WaterMeter
+            </summary>
+            <remarks>This API will add a values.</remarks>
+            <param name="item">New WaterMeter</param>
+            <returns>Gatway added</returns>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.Put(EMDI.Models.WaterMeter,System.Int32)">
+            <summary>
+            Update a WaterMeter
+            </summary>
+            <remarks>This API will update a values.</remarks>
+            <param name="item">WaterMeter to update</param>
+            <param name="id">WaterMeter id</param>
+            <returns>WaterMeter updated</returns>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.Delete(System.Int32)">
+            <summary>
+            Delete a WaterMeter
+            </summary>
+            <remarks>This API will delete values.</remarks>
+            <param name="id">WaterMeter id</param>
+            <returns>Ok</returns>
+        </member>
+    </members>
+</doc>

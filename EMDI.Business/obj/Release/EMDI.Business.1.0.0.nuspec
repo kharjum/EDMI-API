@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EMDI.Business</id>
+    <version>1.0.0</version>
+    <authors>EMDI.Business</authors>
+    <owners>EMDI.Business</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="AutoMapper" version="7.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.App" version="2.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="2.2.0-preview3-35497" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer.Design" version="2.0.0-preview1-final" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="2.2.0-preview3-35497" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Web.CodeGeneration.Design" version="2.2.0-preview3-35497" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="4.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\bin\Release\netcoreapp2.1\EMDI.Business.runtimeconfig.json" target="lib\netcoreapp2.1\EMDI.Business.runtimeconfig.json" />
+    <file src="C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\bin\Release\netcoreapp2.1\EMDI.Business.dll" target="lib\netcoreapp2.1\EMDI.Business.dll" />
+  </files>
+</package>

@@ -8,30 +8,30 @@ using System;
 namespace EMDI.Controllers
 {
     /// <summary>
-    /// WaterMeter Controller API
+    /// ElectricMeter Controller API
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ElectricMetersController : ControllerBase
     {
         /// <summary>
-        /// WaterMeter Repository
+        /// ElectricMeter Repository
         /// </summary>
         private readonly IElectricMeterRepository _repository;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="repository">WaterMeter Repository</param>
+        /// <param name="repository">ElectricMeter Repository</param>
         public ElectricMetersController(IElectricMeterRepository repository)
         {
             _repository = repository;
         }
 
         /// <summary>
-        /// Get a list of WaterMeter avaible
+        /// Get a list of ElectricMeter avaible
         /// </summary>
-        /// <returns>list of WaterMeter avaible</returns>
+        /// <returns>list of ElectricMeter avaible</returns>
         [HttpGet]
         public async Task<ActionResult<List<ElectricMeter>>> Get()
         {
@@ -46,10 +46,10 @@ namespace EMDI.Controllers
         }
 
         /// <summary>
-        /// Get a specific WaterMeter
+        /// Get a specific ElectricMeter
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>A WaterMeter</returns>
+        /// <returns>A ElectricMeter</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(404)]
         public async Task<ActionResult<ElectricMeter>> Get(int id)
@@ -72,9 +72,9 @@ namespace EMDI.Controllers
         }
 
         /// <summary>
-        /// Add a new WaterMeter
+        /// Add a new ElectricMeter
         /// </summary>
-        /// <param name="item">New WaterMeter</param>
+        /// <param name="item">New ElectricMeter</param>
         /// <returns>Gatway added</returns>
         [HttpPost]
         [ProducesResponseType(400)]
@@ -104,11 +104,11 @@ namespace EMDI.Controllers
         }
 
         /// <summary>
-        /// Update a WaterMeter
+        /// Update a ElectricMeter
         /// </summary>
-        /// <param name="item">WaterMeter to update</param>
-        /// <param name="id">WaterMeter id</param>
-        /// <returns>WaterMeter updated</returns>
+        /// <param name="item">ElectricMeter to update</param>
+        /// <param name="id">ElectricMeter id</param>
+        /// <returns>ElectricMeter updated</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(400)]
         public async Task<ActionResult<ElectricMeter>> Put(ElectricMeter item, int id)
@@ -144,9 +144,9 @@ namespace EMDI.Controllers
         }
 
         /// <summary>
-        /// Delete a WaterMeter
+        /// Delete a ElectricMeter
         /// </summary>
-        /// <param name="id">WaterMeter id</param>
+        /// <param name="id">ElectricMeter id</param>
         /// <returns>Ok</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(404)]

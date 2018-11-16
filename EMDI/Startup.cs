@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using EMDI.Models;
+using AutoMapper;
+using EMDI.API.Utils;
+using EMDI.Business.Entities;
 using EMDI.Repository;
 using EMDI.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -26,8 +28,7 @@ namespace EMDI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        {           
 
             if (string.IsNullOrEmpty(Configuration.GetConnectionString("ConnectionString")))
             {
@@ -79,6 +80,19 @@ namespace EMDI
             services.AddScoped<IElectricMeterRepository, ElectricMeterRepository>();
             services.AddScoped<IGatewaysRepository, GatewaysRepository>();
             services.AddScoped<IWaterMeterRepository, WaterMeterRepository>();
+
+            var config = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new ApplicationProfile());
+            });
+
+            var mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
+            services.AddAutoMapper();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

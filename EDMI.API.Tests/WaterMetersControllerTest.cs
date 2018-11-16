@@ -1,4 +1,4 @@
-﻿using EMDI.Models;
+﻿using EMDI.API.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
@@ -38,7 +38,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var models = JsonConvert.DeserializeObject<ICollection<WaterMeter>>(content);
+            var models = JsonConvert.DeserializeObject<ICollection<WaterMeterModel>>(content);
 
             Assert.NotNull(models);
             Assert.True(models.Count > 0);
@@ -60,7 +60,7 @@ namespace EDMI.API.Tests
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            var newModel = JsonConvert.DeserializeObject<WaterMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<WaterMeterModel>(content);
 
             // Act
             response = await this.Fixture.Client.GetAsync("/api/WaterMeters/" + newModel.Id.ToString());
@@ -70,7 +70,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            model = JsonConvert.DeserializeObject<WaterMeter>(content);
+            model = JsonConvert.DeserializeObject<WaterMeterModel>(content);
 
             Assert.NotNull(model);
         }
@@ -82,7 +82,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task Post()
         {
-            WaterMeter model = CreateModel();
+            WaterMeterModel model = CreateModel();
 
             var smodel = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
@@ -94,7 +94,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<WaterMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<WaterMeterModel>(content);
             Assert.True(newModel.Id > 0);
         }
 
@@ -105,7 +105,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PostNOK()
         {
-            var model = new WaterMeter
+            var model = new WaterMeterModel
             {
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),
                 State = RandomString(4)
@@ -138,7 +138,7 @@ namespace EDMI.API.Tests
             // Assert
             var content = await response.Content.ReadAsStringAsync();
 
-            var newModel = JsonConvert.DeserializeObject<WaterMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<WaterMeterModel>(content);
 
             string newSerialNumber = RandomString(6);
 
@@ -154,7 +154,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            newModel = JsonConvert.DeserializeObject<WaterMeter>(content);
+            newModel = JsonConvert.DeserializeObject<WaterMeterModel>(content);
             Assert.Equal(newSerialNumber, newModel.SerialNumber);
         }
 
@@ -165,7 +165,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PutNOK()
         {
-            var model = new WaterMeter
+            var model = new WaterMeterModel
             {
             };
 
@@ -213,7 +213,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<WaterMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<WaterMeterModel>(content);
             Assert.True(newModel.Id > 0);
 
             // Act
@@ -234,9 +234,9 @@ namespace EDMI.API.Tests
         /// Create a new WaterMeter Model
         /// </summary>
         /// <returns></returns>
-        private WaterMeter CreateModel()
+        private WaterMeterModel CreateModel()
         {
-            return new WaterMeter
+            return new WaterMeterModel
             {
                 SerialNumber = RandomString(6),
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),

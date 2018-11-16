@@ -1,4 +1,4 @@
-﻿using EMDI.Models;
+﻿using EMDI.Business.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

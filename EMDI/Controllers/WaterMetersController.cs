@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EMDI.Models;
+using EMDI.Business.Entities;
 using EMDI.Repository.Interfaces;
 using System;
+using EMDI.API.Models;
+using AutoMapper;
 
 namespace EMDI.Controllers
 {
@@ -20,12 +22,19 @@ namespace EMDI.Controllers
         private readonly IWaterMeterRepository _repository;
 
         /// <summary>
+        /// Mapper
+        /// </summary>
+        private readonly IMapper _mapper;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="repository">WaterMeter Repository</param>
-        public WaterMetersController(IWaterMeterRepository repository)
+        /// <param name="mapper"> Mapper </param>
+        public WaterMetersController(IWaterMeterRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -34,11 +43,12 @@ namespace EMDI.Controllers
         /// <remarks>This API will get all values.</remarks>
         /// <returns>list of WaterMeter avaible</returns>
         [HttpGet]
-        public async Task<ActionResult<List<WaterMeter>>> Get()
+        public async Task<ActionResult<List<WaterMeterModel>>> Get()
         {
             try
             {
-                return await _repository.GetWaterMeterAsync();
+                var items = await _repository.GetWaterMeterAsync();
+                return _mapper.Map<List<WaterMeterModel>>(items);
             }
             catch (Exception ex)
             {
@@ -65,7 +75,7 @@ namespace EMDI.Controllers
                     return NotFound();
                 }
 
-                return Ok(item);
+                return Ok(_mapper.Map<WaterMeterModel>(item));
             }
             catch (Exception ex)
             {
@@ -77,15 +87,15 @@ namespace EMDI.Controllers
         /// Add a new WaterMeter
         /// </summary>
         /// <remarks>This API will add a values.</remarks>
-        /// <param name="item">New WaterMeter</param>
+        /// <param name="itemModel">New WaterMeter</param>
         /// <returns>Gatway added</returns>
         [HttpPost]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<WaterMeter>> Post(WaterMeter item)
+        public async Task<ActionResult<WaterMeter>> Post(WaterMeterModel itemModel)
         {
             try
             {
-                if (item == null)
+                if (itemModel == null)
                 {
                     return BadRequest("WaterMeter object is null");
                 }
@@ -94,6 +104,8 @@ namespace EMDI.Controllers
                 {
                     return BadRequest("Invalid model object");
                 }
+
+                var item = _mapper.Map<WaterMeter>(itemModel);
 
                 await _repository.AddWaterMeterAsync(item);
 
@@ -110,18 +122,23 @@ namespace EMDI.Controllers
         /// Update a WaterMeter
         /// </summary>
         /// <remarks>This API will update a values.</remarks>
-        /// <param name="item">WaterMeter to update</param>
+        /// <param name="itemModel">WaterMeter to update</param>
         /// <param name="id">WaterMeter id</param>
         /// <returns>WaterMeter updated</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<WaterMeter>> Put(WaterMeter item, int id)
+        public async Task<ActionResult<WaterMeter>> Put(WaterMeterModel itemModel, int id)
         {
             try
             {
-                if (item == null)
+                if (itemModel == null)
                 {
                     return BadRequest("WaterMeter object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
                 }
 
                 var dbItem = await _repository.GetWaterMeterAsync(id);
@@ -130,10 +147,7 @@ namespace EMDI.Controllers
                     return NotFound();
                 }
 
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
+                var item = _mapper.Map<WaterMeter>(itemModel);
 
                 await _repository.UpdateWaterMeterAsync(dbItem, item);
 

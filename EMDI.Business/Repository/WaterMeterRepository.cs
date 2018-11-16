@@ -1,9 +1,7 @@
 ﻿using EMDI.Business.Repository;
-using EMDI.Models;
+using EMDI.Business.Entities;
 using EMDI.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EMDI.Repository

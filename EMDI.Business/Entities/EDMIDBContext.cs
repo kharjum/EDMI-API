@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace EMDI.Models
+namespace EMDI.Business.Entities
 {
     public partial class EDMIDBContext : DbContext
     {

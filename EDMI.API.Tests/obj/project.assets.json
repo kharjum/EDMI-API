@@ -14,6 +14,19 @@
           "lib/netcoreapp2.0/AutoMapper.dll": {}
         }
       },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "7.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -5309,6 +5322,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "5.0.1",
           "EMDI.Business": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0-preview3-35497",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "2.0.0-preview1-final",
@@ -5366,6 +5380,18 @@
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.pdb",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/5.0.1": {
+      "sha512": "FsPcuVkaAj232P6yrSxnQybBnwawvsg3C65l+BDShGaU9jfANGjMY2evNlQ8RAEezrutpeQT9LFWQJ+sXhaHPw==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/5.0.1",
+      "files": [
+        ".signature.p7s",
+        "automapper.extensions.microsoft.dependencyinjection.5.0.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -14149,11 +14175,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EDMI.API.Tests\\EDMI.API.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EDMI.API.Tests\\EDMI.API.Tests.csproj",
       "projectName": "EDMI.API.Tests",
-      "projectPath": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EDMI.API.Tests\\EDMI.API.Tests.csproj",
+      "projectPath": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EDMI.API.Tests\\EDMI.API.Tests.csproj",
       "packagesPath": "C:\\Users\\rdelgape\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EDMI.API.Tests\\obj\\",
+      "outputPath": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EDMI.API.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -14173,8 +14199,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EMDI\\EMDI.API.csproj": {
-              "projectPath": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EMDI\\EMDI.API.csproj"
+            "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EMDI\\EMDI.API.csproj": {
+              "projectPath": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EMDI\\EMDI.API.csproj"
             }
           }
         }

@@ -8,3 +8,13 @@ C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\obj\Debug\netcoreapp2.
 C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.AssemblyInfo.cs
 C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.dll
 C:\Users\rdelgape\Desktop\EMDI\Web API\EMDI\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.pdb
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\bin\Debug\netcoreapp2.1\EMDI.Business.deps.json
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\bin\Debug\netcoreapp2.1\EMDI.Business.runtimeconfig.json
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\bin\Debug\netcoreapp2.1\EMDI.Business.runtimeconfig.dev.json
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\bin\Debug\netcoreapp2.1\EMDI.Business.dll
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\bin\Debug\netcoreapp2.1\EMDI.Business.pdb
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.csproj.CoreCompileInputs.cache
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.AssemblyInfoInputs.cache
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.AssemblyInfo.cs
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.dll
+C:\Users\rdelgape\Desktop\EDMI\EDMI-API\EDMI-API\EMDI.Business\obj\Debug\netcoreapp2.1\EMDI.Business.pdb

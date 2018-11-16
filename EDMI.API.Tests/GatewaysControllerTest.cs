@@ -1,4 +1,4 @@
-﻿using EMDI.Models;
+﻿using EMDI.API.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
@@ -38,7 +38,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var models = JsonConvert.DeserializeObject<ICollection<Gateways>>(content);
+            var models = JsonConvert.DeserializeObject<ICollection<GatewaysModel>>(content);
 
             Assert.NotNull(models);
             Assert.True(models.Count > 0);
@@ -60,7 +60,7 @@ namespace EDMI.API.Tests
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            var newModel = JsonConvert.DeserializeObject<Gateways>(content);
+            var newModel = JsonConvert.DeserializeObject<GatewaysModel>(content);
 
             // Act
             response = await this.Fixture.Client.GetAsync("/api/Gateways/" + newModel.Id.ToString());
@@ -70,7 +70,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            model = JsonConvert.DeserializeObject<Gateways>(content);
+            model = JsonConvert.DeserializeObject<GatewaysModel>(content);
 
             Assert.NotNull(model);
         }
@@ -82,7 +82,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task Post()
         {
-            Gateways model = CreateModel();
+            GatewaysModel model = CreateModel();
 
             var smodel = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
@@ -94,7 +94,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<Gateways>(content);
+            var newModel = JsonConvert.DeserializeObject<GatewaysModel>(content);
             Assert.True(newModel.Id > 0);
         }
 
@@ -105,7 +105,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PostNOK()
         {
-            var model = new Gateways
+            var model = new GatewaysModel
             {
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),
                 State = RandomString(4)
@@ -138,7 +138,7 @@ namespace EDMI.API.Tests
             // Assert
             var content = await response.Content.ReadAsStringAsync();
 
-            var newModel = JsonConvert.DeserializeObject<Gateways>(content);
+            var newModel = JsonConvert.DeserializeObject<GatewaysModel>(content);
 
             string newSerialNumber = RandomString(6);
 
@@ -154,7 +154,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            newModel = JsonConvert.DeserializeObject<Gateways>(content);
+            newModel = JsonConvert.DeserializeObject<GatewaysModel>(content);
             Assert.Equal(newSerialNumber, newModel.SerialNumber);
         }
 
@@ -165,7 +165,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PutNOK()
         {
-            var model = new Gateways
+            var model = new GatewaysModel
             {
             };
 
@@ -213,7 +213,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<Gateways>(content);
+            var newModel = JsonConvert.DeserializeObject<GatewaysModel>(content);
             Assert.True(newModel.Id > 0);
 
             // Act
@@ -234,9 +234,9 @@ namespace EDMI.API.Tests
         /// Create a new Gateway Model
         /// </summary>
         /// <returns></returns>
-        private Gateways CreateModel()
+        private GatewaysModel CreateModel()
         {
-            return new Gateways
+            return new GatewaysModel
             {
                 SerialNumber = RandomString(6),
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),

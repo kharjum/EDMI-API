@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace EMDI.Business.Models
+namespace EMDI.API.Models
 {
-    public partial class BasicDevice
+    public partial class BasicDeviceModel : BaseModel<int>
     {
-        [Key]
-        public int? Id { get; set; }
-
         [Required(ErrorMessage = "This field is required")]
         [MaxLength(20, ErrorMessage = "Maximum length for this field is {1}")]
         public string SerialNumber { get; set; }

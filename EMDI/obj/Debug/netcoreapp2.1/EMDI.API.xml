@@ -6,53 +6,54 @@
     <members>
         <member name="T:EMDI.Controllers.ElectricMetersController">
             <summary>
-            WaterMeter Controller API
+            ElectricMeter Controller API
             </summary>
         </member>
         <member name="F:EMDI.Controllers.ElectricMetersController._repository">
             <summary>
-            WaterMeter Repository
+            ElectricMeter Repository
             </summary>
         </member>
-        <member name="M:EMDI.Controllers.ElectricMetersController.#ctor(EMDI.Repository.Interfaces.IElectricMeterRepository)">
+        <member name="M:EMDI.Controllers.ElectricMetersController.#ctor(EMDI.Repository.Interfaces.IElectricMeterRepository,AutoMapper.IMapper)">
             <summary>
             Constructor
             </summary>
-            <param name="repository">WaterMeter Repository</param>
+            <param name="repository">ElectricMeter Repository</param>
+            <param name="mapper"> Mapper </param>
         </member>
         <member name="M:EMDI.Controllers.ElectricMetersController.Get">
             <summary>
-            Get a list of WaterMeter avaible
+            Get a list of ElectricMeter avaible
             </summary>
-            <returns>list of WaterMeter avaible</returns>
+            <returns>list of ElectricMeter avaible</returns>
         </member>
         <member name="M:EMDI.Controllers.ElectricMetersController.Get(System.Int32)">
             <summary>
-            Get a specific WaterMeter
+            Get a specific ElectricMeter
             </summary>
             <param name="id"></param>
-            <returns>A WaterMeter</returns>
+            <returns>A ElectricMeter</returns>
         </member>
-        <member name="M:EMDI.Controllers.ElectricMetersController.Post(EMDI.Models.ElectricMeter)">
+        <member name="M:EMDI.Controllers.ElectricMetersController.Post(EMDI.API.Models.ElectricMeterModel)">
             <summary>
-            Add a new WaterMeter
+            Add a new ElectricMeter
             </summary>
-            <param name="item">New WaterMeter</param>
+            <param name="itemModel">New ElectricMeter</param>
             <returns>Gatway added</returns>
         </member>
-        <member name="M:EMDI.Controllers.ElectricMetersController.Put(EMDI.Models.ElectricMeter,System.Int32)">
+        <member name="M:EMDI.Controllers.ElectricMetersController.Put(EMDI.API.Models.ElectricMeterModel,System.Int32)">
             <summary>
-            Update a WaterMeter
+            Update a ElectricMeter
             </summary>
-            <param name="item">WaterMeter to update</param>
-            <param name="id">WaterMeter id</param>
-            <returns>WaterMeter updated</returns>
+            <param name="itemModel">ElectricMeter to update</param>
+            <param name="id">ElectricMeter id</param>
+            <returns>ElectricMeter updated</returns>
         </member>
         <member name="M:EMDI.Controllers.ElectricMetersController.Delete(System.Int32)">
             <summary>
-            Delete a WaterMeter
+            Delete a ElectricMeter
             </summary>
-            <param name="id">WaterMeter id</param>
+            <param name="id">ElectricMeter id</param>
             <returns>Ok</returns>
         </member>
         <member name="T:EMDI.Controllers.GatewaysController">
@@ -65,11 +66,17 @@
             Gateway Repository
             </summary>
         </member>
-        <member name="M:EMDI.Controllers.GatewaysController.#ctor(EMDI.Repository.Interfaces.IGatewaysRepository)">
+        <member name="F:EMDI.Controllers.GatewaysController._mapper">
+            <summary>
+            Mapper
+            </summary>
+        </member>
+        <member name="M:EMDI.Controllers.GatewaysController.#ctor(EMDI.Repository.Interfaces.IGatewaysRepository,AutoMapper.IMapper)">
             <summary>
             Constructor
             </summary>
             <param name="repository">Gateway Repository</param>
+            <param name="mapper">Mapper</param>
         </member>
         <member name="M:EMDI.Controllers.GatewaysController.Get">
             <summary>
@@ -86,20 +93,20 @@
             <param name="id"></param>
             <returns>A gateway</returns>
         </member>
-        <member name="M:EMDI.Controllers.GatewaysController.Post(EMDI.Models.Gateways)">
+        <member name="M:EMDI.Controllers.GatewaysController.Post(EMDI.API.Models.GatewaysModel)">
             <summary>
             Add a new gateway
             </summary>
             <remarks>This API will add a new value.</remarks>
-            <param name="item">New Gateway</param>
+            <param name="itemModel">New Gateway</param>
             <returns>Gatway added</returns>
         </member>
-        <member name="M:EMDI.Controllers.GatewaysController.Put(EMDI.Models.Gateways,System.Int32)">
+        <member name="M:EMDI.Controllers.GatewaysController.Put(EMDI.API.Models.GatewaysModel,System.Int32)">
             <summary>
             Update a Gateway
             </summary>
             <remarks>This API will update a value.</remarks>
-            <param name="item">Gateway to update</param>
+            <param name="itemModel">Gateway to update</param>
             <param name="id">Gateway id</param>
             <returns>Gateway updated</returns>
         </member>
@@ -120,11 +127,17 @@
             WaterMeter Repository
             </summary>
         </member>
-        <member name="M:EMDI.Controllers.WaterMetersController.#ctor(EMDI.Repository.Interfaces.IWaterMeterRepository)">
+        <member name="F:EMDI.Controllers.WaterMetersController._mapper">
+            <summary>
+            Mapper
+            </summary>
+        </member>
+        <member name="M:EMDI.Controllers.WaterMetersController.#ctor(EMDI.Repository.Interfaces.IWaterMeterRepository,AutoMapper.IMapper)">
             <summary>
             Constructor
             </summary>
             <param name="repository">WaterMeter Repository</param>
+            <param name="mapper"> Mapper </param>
         </member>
         <member name="M:EMDI.Controllers.WaterMetersController.Get">
             <summary>
@@ -141,20 +154,20 @@
             <param name="id"></param>
             <returns>A WaterMeter</returns>
         </member>
-        <member name="M:EMDI.Controllers.WaterMetersController.Post(EMDI.Models.WaterMeter)">
+        <member name="M:EMDI.Controllers.WaterMetersController.Post(EMDI.API.Models.WaterMeterModel)">
             <summary>
             Add a new WaterMeter
             </summary>
             <remarks>This API will add a values.</remarks>
-            <param name="item">New WaterMeter</param>
+            <param name="itemModel">New WaterMeter</param>
             <returns>Gatway added</returns>
         </member>
-        <member name="M:EMDI.Controllers.WaterMetersController.Put(EMDI.Models.WaterMeter,System.Int32)">
+        <member name="M:EMDI.Controllers.WaterMetersController.Put(EMDI.API.Models.WaterMeterModel,System.Int32)">
             <summary>
             Update a WaterMeter
             </summary>
             <remarks>This API will update a values.</remarks>
-            <param name="item">WaterMeter to update</param>
+            <param name="itemModel">WaterMeter to update</param>
             <param name="id">WaterMeter id</param>
             <returns>WaterMeter updated</returns>
         </member>
@@ -165,6 +178,12 @@
             <remarks>This API will delete values.</remarks>
             <param name="id">WaterMeter id</param>
             <returns>Ok</returns>
+        </member>
+        <member name="T:EMDI.API.Models.BaseModel`1">
+            <summary>
+            Entidad Base
+            </summary>
+            <typeparam name="T"> Clase Genérica de modelo </typeparam>
         </member>
     </members>
 </doc>

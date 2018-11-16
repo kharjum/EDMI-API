@@ -1,7 +1,5 @@
-﻿using EMDI.Business.Models;
-
-
-namespace EMDI.Models
+﻿
+namespace EMDI.Business.Entities
 {
     public partial class WaterMeter: BasicDevice
     {

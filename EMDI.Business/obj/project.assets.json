@@ -12577,11 +12577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EMDI.Business\\EMDI.Business.csproj",
+      "projectUniqueName": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EMDI.Business\\EMDI.Business.csproj",
       "projectName": "EMDI.Business",
-      "projectPath": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EMDI.Business\\EMDI.Business.csproj",
+      "projectPath": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EMDI.Business\\EMDI.Business.csproj",
       "packagesPath": "C:\\Users\\rdelgape\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rdelgape\\Desktop\\EMDI\\Web API\\EMDI\\EMDI.Business\\obj\\",
+      "outputPath": "C:\\Users\\rdelgape\\Desktop\\EDMI\\EDMI-API\\EDMI-API\\EMDI.Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

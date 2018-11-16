@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EMDI.Models;
+using EMDI.Business.Entities;
 using EMDI.Repository.Interfaces;
 using System;
+using AutoMapper;
+using EMDI.API.Models;
 
 namespace EMDI.Controllers
 {
@@ -20,12 +22,19 @@ namespace EMDI.Controllers
         private readonly IGatewaysRepository _repository;
 
         /// <summary>
+        /// Mapper
+        /// </summary>
+        private readonly IMapper _mapper;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="repository">Gateway Repository</param>
-        public GatewaysController(IGatewaysRepository repository)
+        /// <param name="mapper">Mapper</param>
+        public GatewaysController(IGatewaysRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -34,11 +43,13 @@ namespace EMDI.Controllers
         /// <remarks>This API will get all values.</remarks>
         /// <returns>list of Gateway avaible</returns>
         [HttpGet]
-        public async Task<ActionResult<List<Gateways>>> Get()
+        public async Task<ActionResult<List<GatewaysModel>>> Get()
         {            
             try
             {
-                return await _repository.GetGatewaysAsync();
+                var items = await _repository.GetGatewaysAsync();
+
+                return _mapper.Map<List<GatewaysModel>>(items);
             }
             catch (Exception ex)
             {
@@ -54,7 +65,7 @@ namespace EMDI.Controllers
         /// <returns>A gateway</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<Gateways>> Get(int id)
+        public async Task<ActionResult<GatewaysModel>> Get(int id)
         {
             try
             {
@@ -65,7 +76,7 @@ namespace EMDI.Controllers
                     return NotFound();
                 }
 
-                return Ok(item);
+                return Ok(_mapper.Map<GatewaysModel>(item));
             }
             catch (Exception ex)
             {
@@ -77,15 +88,15 @@ namespace EMDI.Controllers
         /// Add a new gateway
         /// </summary>
         /// <remarks>This API will add a new value.</remarks>
-        /// <param name="item">New Gateway</param>
+        /// <param name="itemModel">New Gateway</param>
         /// <returns>Gatway added</returns>
         [HttpPost]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<Gateways>> Post(Gateways item)
+        public async Task<ActionResult<Gateways>> Post(GatewaysModel itemModel)
         {
             try
             {
-                if (item == null)
+                if (itemModel == null)
                 {
                     return BadRequest("Gateways object is null");
                 }
@@ -94,6 +105,8 @@ namespace EMDI.Controllers
                 {
                     return BadRequest("Invalid model object");
                 }
+
+                var item = _mapper.Map<Gateways>(itemModel);
 
                 await _repository.AddGatewaysAsync(item);
 
@@ -110,16 +123,16 @@ namespace EMDI.Controllers
         /// Update a Gateway
         /// </summary>
         /// <remarks>This API will update a value.</remarks>
-        /// <param name="item">Gateway to update</param>
+        /// <param name="itemModel">Gateway to update</param>
         /// <param name="id">Gateway id</param>
         /// <returns>Gateway updated</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<Gateways>> Put(Gateways item, int id)
+        public async Task<ActionResult<Gateways>> Put(GatewaysModel itemModel, int id)
         {
             try
             {
-                if (item == null)
+                if (itemModel == null)
                 {
                     return BadRequest("Gateways object is null");
                 }
@@ -134,6 +147,8 @@ namespace EMDI.Controllers
                 {
                     return BadRequest(ModelState);
                 }
+
+                var item = _mapper.Map<Gateways>(itemModel);
 
                 await _repository.UpdateGatewaysAsync(dbItem, item);
 

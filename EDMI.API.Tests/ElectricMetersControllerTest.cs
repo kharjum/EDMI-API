@@ -1,4 +1,4 @@
-using EMDI.Models;
+using EMDI.API.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -39,7 +39,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var models = JsonConvert.DeserializeObject<ICollection<ElectricMeter>>(content);
+            var models = JsonConvert.DeserializeObject<ICollection<ElectricMeterModel>>(content);
 
             Assert.NotNull(models);
             Assert.True(models.Count > 0);
@@ -61,7 +61,7 @@ namespace EDMI.API.Tests
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
-            var newModel = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
 
             // Act
             response = await this.Fixture.Client.GetAsync("/api/ElectricMeters/" + newModel.Id.ToString());
@@ -71,7 +71,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            model = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            model = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
 
             Assert.NotNull(model);
         }
@@ -83,7 +83,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task Post()
         {
-            ElectricMeter model = CreateModel();
+            ElectricMeterModel model = CreateModel();
 
             var smodel = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
@@ -95,7 +95,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
             Assert.True(newModel.Id > 0);
         }
 
@@ -106,7 +106,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PostNOK()
         {
-            var model = new ElectricMeter
+            var model = new ElectricMeterModel
             {
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),
                 State = RandomString(4)
@@ -139,7 +139,7 @@ namespace EDMI.API.Tests
             // Assert
             var content = await response.Content.ReadAsStringAsync();
 
-            var newModel = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
 
             string newSerialNumber = RandomString(6);
 
@@ -155,7 +155,7 @@ namespace EDMI.API.Tests
             content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            newModel = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            newModel = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
             Assert.Equal(newSerialNumber, newModel.SerialNumber);
         }
 
@@ -166,7 +166,7 @@ namespace EDMI.API.Tests
         [Fact]
         public async Task PutNOK()
         {
-            var model = new ElectricMeter
+            var model = new ElectricMeterModel
             {
             };
 
@@ -214,7 +214,7 @@ namespace EDMI.API.Tests
             var content = await response.Content.ReadAsStringAsync();
             Assert.False(string.IsNullOrWhiteSpace(content));
 
-            var newModel = JsonConvert.DeserializeObject<ElectricMeter>(content);
+            var newModel = JsonConvert.DeserializeObject<ElectricMeterModel>(content);
             Assert.True(newModel.Id > 0);
 
             // Act
@@ -235,9 +235,9 @@ namespace EDMI.API.Tests
         /// Create a new ElectricMeter Model
         /// </summary>
         /// <returns></returns>
-        private ElectricMeter CreateModel()
+        private ElectricMeterModel CreateModel()
         {
-            return new ElectricMeter
+            return new ElectricMeterModel
             {
                 SerialNumber = RandomString(6),
                 FirmwareVersion = "v." + RandomInt(1, 99).ToString(),
